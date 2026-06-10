@@ -41,7 +41,7 @@ export default function Navbar() {
               <span className="w-6 h-6 rounded-full bg-dark-800 flex items-center justify-center transition-transform group-hover:-translate-x-0.5">
                 <ArrowLeft className="w-3 h-3 text-cream-100" />
               </span>
-              <span>Return My Time</span>
+              <span>Reclaim My Time</span>
             </a>
 
             {/* Desktop Nav */}

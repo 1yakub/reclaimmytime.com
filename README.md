@@ -1,8 +1,8 @@
-# Return My Time — reclaimmytime.com
+# Reclaim My Time — reclaimmytime.com
 
 > Reclaim 5–10 hours a week with AI tools — without becoming a tech person.
 
-A modern, production-ready marketing landing page for **Return My Time**, an AI productivity consultancy that helps time-strapped business owners automate repetitive tasks through a custom AI toolstack assessment.
+A modern, production-ready marketing landing page for **Reclaim My Time**, an AI productivity consultancy that helps time-strapped business owners automate repetitive tasks through a custom AI toolstack assessment.
 
 ---
 
@@ -125,4 +125,4 @@ To deploy your own fork:
 
 ## 📄 License
 
-Private — © Return My Time. All rights reserved.
+Private — © Reclaim My Time. All rights reserved.

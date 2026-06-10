@@ -51,7 +51,7 @@ export default function HeroSection() {
           custom={0.2}
           variants={fadeUp}
         >
-          Return My Time helps you automate repetitive tasks with AI and reclaim
+          Reclaim My Time helps you automate repetitive tasks with AI and reclaim
           5–10 hours a week — without becoming a tech person.
         </motion.p>
 

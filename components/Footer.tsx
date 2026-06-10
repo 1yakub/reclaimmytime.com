@@ -32,7 +32,7 @@ export default function Footer() {
               <span className="w-6 h-6 rounded-full bg-cream-100 flex items-center justify-center transition-transform group-hover:-translate-x-0.5">
                 <ArrowLeft className="w-3 h-3 text-dark-900" />
               </span>
-              <span>Return My Time</span>
+              <span>Reclaim My Time</span>
             </a>
             <p className="font-sans text-xs text-cream-400 leading-relaxed max-w-[180px]">
               Reclaim 5–10 hours a week with AI — without becoming a tech person.
@@ -63,7 +63,7 @@ export default function Footer() {
 
         <div className="border-t border-dark-700 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="font-sans text-xs text-dark-600">
-            © {new Date().getFullYear()} Return My Time. All rights reserved.
+            © {new Date().getFullYear()} Reclaim My Time. All rights reserved.
           </p>
           <p className="font-sans text-xs text-dark-600">reclaimmytime.com</p>
         </div>

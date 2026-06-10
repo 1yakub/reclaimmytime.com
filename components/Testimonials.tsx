@@ -7,7 +7,7 @@ import { ChevronLeft, ChevronRight, Quote } from 'lucide-react'
 const testimonials = [
   {
     quote:
-      "I used to spend hours on comparative market analysis. Return My Time identified tools I didn't even know existed. Now I have systems that run themselves.",
+      "I used to spend hours on comparative market analysis. Reclaim My Time identified tools I didn't even know existed. Now I have systems that run themselves.",
     name: 'Kaila Koivisto',
     title: 'Top DJ Realtor, Charlotte NC',
     initial: 'K',
