@@ -1,8 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { motion, useInView, AnimatePresence } from 'framer-motion'
-import { useRef } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronLeft, ChevronRight, Quote } from 'lucide-react'
 
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1]
@@ -32,12 +31,10 @@ const testimonials = [
 ]
 
 export default function Testimonials() {
-  const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-20px' })
   const [current, setCurrent] = useState(0)
 
   return (
-    <section className="py-24 px-6 bg-cream-100" ref={ref}>
+    <section className="py-24 px-6 bg-cream-100">
       <div className="max-w-5xl mx-auto">
         <motion.div
           className="text-center mb-16"

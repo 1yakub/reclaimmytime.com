@@ -1,4 +1,4 @@
-import { ArrowLeft } from 'lucide-react'
+import { MainLogo } from './icons/BrandIcons'
 
 const footerLinks = {
   Offer: [
@@ -29,8 +29,8 @@ export default function Footer() {
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <a href="/" className="flex items-center gap-2 text-cream-100 font-sans font-semibold text-sm mb-4 group">
-              <span className="w-6 h-6 rounded-full bg-cream-100 flex items-center justify-center transition-transform group-hover:-translate-x-0.5">
-                <ArrowLeft className="w-3 h-3 text-dark-900" />
+              <span className="w-6 h-6 flex items-center justify-center transition-transform group-hover:-translate-x-0.5">
+                <MainLogo className="w-6 h-6" />
               </span>
               <span>Reclaim My Time</span>
             </a>

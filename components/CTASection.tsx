@@ -1,20 +1,18 @@
 'use client'
 
-import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
-import { ArrowRight } from 'lucide-react'
+import { motion } from 'framer-motion'
+
+const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1]
 
 export default function CTASection() {
-  const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-80px' })
-
   return (
-    <section id="book" className="py-24 px-6 bg-dark-800" ref={ref}>
+    <section id="book" className="py-24 px-6 bg-dark-800">
       <div className="max-w-2xl mx-auto text-center">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-20px' }}
+          transition={{ duration: 0.5, ease: EASE }}
         >
           <p className="text-xs font-sans font-medium tracking-widest uppercase text-gold-400 mb-5">
             Get started today
@@ -32,14 +30,19 @@ export default function CTASection() {
               id="cta-book-assessment"
               className="btn-gold gap-2 px-8 py-4 text-sm shadow-lg shadow-gold-500/20"
             >
-              Book AI Tools Assessment
-              <ArrowRight className="w-4 h-4" />
+              Book the AI Tools Assessment →
             </a>
             <a
               href="#chat"
-              className="text-sm font-sans text-cream-300 hover:text-cream-100 transition-colors underline underline-offset-4"
+              className="flex items-center gap-2 text-sm font-sans text-cream-400 hover:text-cream-100 transition-colors group"
             >
-              or chat with Annie first
+              or
+              <span className="flex items-center gap-2 underline decoration-cream-600 underline-offset-4 group-hover:decoration-cream-100">
+                <div className="w-5 h-5 rounded-full bg-dark-900 border border-dark-700 flex items-center justify-center">
+                  <span className="text-gold-400 font-serif font-bold text-[10px]">A</span>
+                </div>
+                chat with Annie
+              </span>
             </a>
           </div>
         </motion.div>

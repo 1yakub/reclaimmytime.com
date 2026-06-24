@@ -1,7 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { Menu, X, ArrowLeft, ChevronDown } from 'lucide-react'
+import { Menu, X, ChevronDown } from 'lucide-react'
+import { MainLogo } from './icons/BrandIcons'
 
 const navLinks = [
   { label: 'How it works', href: '#how-it-works' },
@@ -9,11 +10,8 @@ const navLinks = [
   { label: 'Resources', href: '#resources', hasDropdown: true },
 ]
 
-const audienceTabs = ['Owners', 'Executives', 'Coaches', 'Operations']
-
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
-  const [activeTab, setActiveTab] = useState('Owners')
 
   return (
     <>
@@ -25,8 +23,8 @@ export default function Navbar() {
               href="/"
               className="flex items-center gap-2 text-dark-800 font-sans font-semibold text-sm tracking-tight group"
             >
-              <span className="w-6 h-6 rounded-full bg-dark-800 flex items-center justify-center transition-transform group-hover:-translate-x-0.5">
-                <ArrowLeft className="w-3 h-3 text-cream-100" />
+              <span className="w-6 h-6 flex items-center justify-center transition-transform group-hover:-translate-x-0.5">
+                <MainLogo className="w-6 h-6" />
               </span>
               <span>Reclaim My Time</span>
             </a>
@@ -64,27 +62,6 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Audience Tabs */}
-        <div className="border-t border-cream-300">
-          <div className="max-w-6xl mx-auto px-6">
-            <div className="flex items-center gap-6 py-2 overflow-x-auto">
-              {audienceTabs.map((tab) => (
-                <button
-                  key={tab}
-                  onClick={() => setActiveTab(tab)}
-                  className={`text-xs font-sans font-medium whitespace-nowrap pb-1 ${
-                    activeTab === tab
-                      ? 'text-dark-800 border-b border-dark-800'
-                      : 'text-muted hover:text-dark-700'
-                  }`}
-                  style={{ transition: 'color 150ms ease' }}
-                >
-                  {tab}
-                </button>
-              ))}
-            </div>
-          </div>
-        </div>
       </header>
 
       {/* Mobile Menu */}

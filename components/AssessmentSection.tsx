@@ -1,7 +1,8 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { CheckCircle, ChevronRight } from 'lucide-react'
+import { ChevronRight } from 'lucide-react'
+import { CustomCheckIcon } from './icons/BrandIcons'
 
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1]
 
@@ -73,7 +74,7 @@ export default function AssessmentSection() {
                   viewport={{ once: true, margin: '-20px' }}
                   transition={{ duration: 0.35, delay: 0.15 + i * 0.07, ease: EASE }}
                 >
-                  <CheckCircle className="w-5 h-5 text-gold-500 flex-shrink-0 mt-0.5" />
+                  <CustomCheckIcon className="w-[18px] h-[18px] flex-shrink-0 mt-0.5" />
                   <span className="font-sans text-sm text-dark-700 leading-snug">{item}</span>
                 </motion.li>
               ))}

@@ -1,16 +1,17 @@
 'use client'
 
 import { motion, type Variants } from 'framer-motion'
+import { ClaudeLogo, FathomLogo, WisprFlowLogo, GoHighLevelLogo, ZapierLogo, OpenAILogo } from './icons/BrandIcons'
 
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1]
 
 const tools = [
-  { name: 'Claude', category: 'Writing + thinking', bg: '#C96442', letter: 'C' },
-  { name: 'Fathom', category: 'Meeting notes', bg: '#4F7CFF', letter: 'F' },
-  { name: 'WarpFlow', category: 'Talk-to-type', bg: '#2D2D2D', letter: 'W' },
-  { name: 'GoHighLevel', category: 'CRM & follow-up', bg: '#0FA57A', letter: 'G' },
-  { name: 'Zapier', category: 'Automation', bg: '#FF4A00', letter: 'Z' },
-  { name: 'OpenAI', category: 'ChatGPT + everyday AI', bg: '#10A37F', letter: 'O' },
+  { name: 'Claude', category: 'Writing + thinking', bg: '#FAF7F2', Icon: ClaudeLogo },
+  { name: 'Fathom', category: 'Meeting notes', bg: '#FAF7F2', Icon: FathomLogo },
+  { name: 'WisprFlow', category: 'Talk-to-type', bg: '#FAF7F2', Icon: WisprFlowLogo },
+  { name: 'GoHighLevel', category: 'CRM & follow-up', bg: '#FAF7F2', Icon: GoHighLevelLogo },
+  { name: 'Zapier', category: 'Automation', bg: '#FAF7F2', Icon: ZapierLogo },
+  { name: 'OpenAI', category: 'ChatGPT + everyday AI', bg: '#FAF7F2', Icon: OpenAILogo },
 ]
 
 const containerVariants: Variants = {
@@ -53,10 +54,9 @@ export default function ToolsGrid() {
               whileHover={{ borderColor: '#C4A96B', boxShadow: '0 4px 16px rgba(0,0,0,0.08)' }}
             >
               <div
-                className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 shadow-sm"
-                style={{ backgroundColor: tool.bg }}
+                className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 border border-cream-300 bg-white"
               >
-                <span className="text-white font-sans font-bold text-sm">{tool.letter}</span>
+                <tool.Icon className="w-6 h-6" />
               </div>
               <div>
                 <p className="font-sans font-semibold text-sm text-dark-800">{tool.name}</p>

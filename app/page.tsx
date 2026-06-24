@@ -1,5 +1,5 @@
-import HeroSection from '@/components/HeroSection'
 import Navbar from '@/components/Navbar'
+import HeroSection from '@/components/HeroSection'
 import ToolsGrid from '@/components/ToolsGrid'
 import AssessmentSection from '@/components/AssessmentSection'
 import HowItWorks from '@/components/HowItWorks'
@@ -13,8 +13,8 @@ import Footer from '@/components/Footer'
 export default function Home() {
   return (
     <main>
-      <HeroSection />
       <Navbar />
+      <HeroSection />
       <ToolsGrid />
       <AssessmentSection />
       <HowItWorks />
