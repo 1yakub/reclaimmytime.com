@@ -1,38 +1,25 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { Menu, X, ArrowLeft } from 'lucide-react'
+import { useState } from 'react'
+import { Menu, X, ArrowLeft, ChevronDown } from 'lucide-react'
 
 const navLinks = [
   { label: 'How it works', href: '#how-it-works' },
   { label: 'AI Tools Assessment', href: '#assessment' },
-  { label: 'Resources', href: '#resources' },
+  { label: 'Resources', href: '#resources', hasDropdown: true },
 ]
 
 const audienceTabs = ['Owners', 'Executives', 'Coaches', 'Operations']
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [activeTab, setActiveTab] = useState('Owners')
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20)
-    window.addEventListener('scroll', onScroll)
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
-
   return (
     <>
-      <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled
-            ? 'bg-cream-100/95 backdrop-blur-md shadow-sm border-b border-cream-300'
-            : 'bg-transparent'
-        }`}
-      >
+      <header className="sticky top-0 z-50 bg-cream-100/95 backdrop-blur-md border-b border-cream-300 shadow-sm">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="flex items-center justify-between h-16">
+          <div className="flex items-center justify-between h-14">
             {/* Logo */}
             <a
               href="/"
@@ -50,9 +37,11 @@ export default function Navbar() {
                 <a
                   key={link.label}
                   href={link.href}
-                  className="text-sm font-sans text-dark-700 hover:text-dark-900 transition-colors"
+                  className="flex items-center gap-1 text-sm font-sans text-dark-700 hover:text-dark-900"
+                  style={{ transition: 'color 150ms ease' }}
                 >
                   {link.label}
+                  {link.hasDropdown && <ChevronDown className="w-3 h-3 opacity-60" />}
                 </a>
               ))}
             </nav>
@@ -76,18 +65,19 @@ export default function Navbar() {
         </div>
 
         {/* Audience Tabs */}
-        <div className="border-t border-cream-300 bg-cream-100/90">
+        <div className="border-t border-cream-300">
           <div className="max-w-6xl mx-auto px-6">
-            <div className="flex items-center gap-6 py-2.5 overflow-x-auto">
+            <div className="flex items-center gap-6 py-2 overflow-x-auto">
               {audienceTabs.map((tab) => (
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
-                  className={`text-xs font-sans font-medium whitespace-nowrap pb-1 transition-all ${
+                  className={`text-xs font-sans font-medium whitespace-nowrap pb-1 ${
                     activeTab === tab
                       ? 'text-dark-800 border-b border-dark-800'
                       : 'text-muted hover:text-dark-700'
                   }`}
+                  style={{ transition: 'color 150ms ease' }}
                 >
                   {tab}
                 </button>

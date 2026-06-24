@@ -11,6 +11,11 @@ const messages = [
   { type: 'bot', text: "Great! What's taking up most of your time right now — admin, client work, or content?" },
 ]
 
+const yesNoOptions = [
+  { label: "Yes — I'm using AI tools like ChatGPT or Claude at least a few times per week.", value: 'yes' },
+  { label: "No — I've played around with AI but it hasn't become part of my routine yet.", value: 'no' },
+]
+
 export default function AnnieChat() {
   return (
     <section className="py-24 px-6 bg-cream-100">
@@ -72,27 +77,38 @@ export default function AnnieChat() {
               </div>
 
               {/* Messages */}
-              <div className="p-5 space-y-4 min-h-[220px]">
-                {messages.map((msg, i) => (
-                  <motion.div
-                    key={i}
-                    className={`flex ${msg.type === 'user' ? 'justify-end' : 'justify-start'}`}
-                    initial={{ opacity: 0, y: 6 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: 0.3 + i * 0.18, ease: EASE }}
-                  >
-                    <div
-                      className={`max-w-[80%] px-4 py-3 rounded-2xl text-xs font-sans leading-relaxed ${
-                        msg.type === 'user'
-                          ? 'bg-dark-800 text-cream-100 rounded-br-sm'
-                          : 'bg-white border border-cream-300 text-dark-700 rounded-bl-sm'
-                      }`}
+              <div className="p-5 space-y-3">
+                {/* Bot question */}
+                <motion.div
+                  className="flex justify-start"
+                  initial={{ opacity: 0, y: 6 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.3, delay: 0.3, ease: EASE }}
+                >
+                  <div className="max-w-[85%] px-4 py-3 rounded-2xl rounded-bl-sm bg-white border border-cream-300 text-xs font-sans leading-relaxed text-dark-700">
+                    Are you regularly using AI tools in your business?
+                  </div>
+                </motion.div>
+
+                {/* Yes/No choice buttons — matches original */}
+                <motion.div
+                  className="space-y-2"
+                  initial={{ opacity: 0, y: 6 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.3, delay: 0.55, ease: EASE }}
+                >
+                  {yesNoOptions.map((opt) => (
+                    <button
+                      key={opt.value}
+                      className="w-full text-left px-4 py-3 rounded-2xl border text-xs font-sans leading-relaxed text-dark-700 bg-white border-cream-300 hover:border-gold-400 hover:bg-cream-50"
+                      style={{ transition: 'border-color 150ms ease, background-color 150ms ease' }}
                     >
-                      {msg.text}
-                    </div>
-                  </motion.div>
-                ))}
+                      {opt.label}
+                    </button>
+                  ))}
+                </motion.div>
 
                 {/* Typing indicator */}
                 <motion.div
@@ -100,7 +116,7 @@ export default function AnnieChat() {
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.3, delay: 0.9, ease: EASE }}
+                  transition={{ duration: 0.3, delay: 0.85, ease: EASE }}
                 >
                   <div className="bg-white border border-cream-300 rounded-2xl rounded-bl-sm px-4 py-3 flex gap-1.5 items-center">
                     {[0, 1, 2].map((j) => (
@@ -114,7 +130,7 @@ export default function AnnieChat() {
                 </motion.div>
               </div>
 
-              {/* Input */}
+              {/* Bottom send bar */}
               <div className="px-5 pb-5">
                 <div className="flex items-center gap-3 bg-white border border-cream-300 rounded-full px-4 py-2.5">
                   <input
@@ -123,12 +139,7 @@ export default function AnnieChat() {
                     className="flex-1 bg-transparent text-xs font-sans text-dark-700 placeholder-cream-400 outline-none"
                     readOnly
                   />
-                  <button
-                    className="w-7 h-7 rounded-full bg-gold-500 flex items-center justify-center flex-shrink-0"
-                    style={{ transition: 'background-color 150ms ease' }}
-                    onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#9E8A54')}
-                    onMouseLeave={e => (e.currentTarget.style.backgroundColor = '#B8A46A')}
-                  >
+                  <button className="w-7 h-7 rounded-full bg-gold-500 flex items-center justify-center flex-shrink-0 hover:bg-gold-600" style={{ transition: 'background-color 150ms ease' }}>
                     <Send className="w-3 h-3 text-white" />
                   </button>
                 </div>

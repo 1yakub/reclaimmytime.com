@@ -24,23 +24,21 @@ export default function HowItWorks() {
           How it works
         </motion.p>
 
-        <div className="grid md:grid-cols-3 gap-8 md:gap-12 relative">
-          {/* Connector line */}
-          <div className="hidden md:block absolute top-8 left-[16.5%] right-[16.5%] h-px bg-cream-300" />
-
+        <div className="grid md:grid-cols-3 gap-10 md:gap-12">
           {steps.map((step, i) => (
             <motion.div
               key={step.number}
-              className="relative flex flex-col items-center md:items-start text-center md:text-left"
+              className="flex flex-col items-center md:items-start text-center md:text-left"
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-20px' }}
               transition={{ duration: 0.45, delay: i * 0.1, ease: EASE }}
             >
-              <div className="relative z-10 w-16 h-16 rounded-full border-2 border-cream-300 bg-cream-50 flex items-center justify-center mb-6 flex-shrink-0">
-                <span className="font-serif text-2xl font-bold text-gold-600">{step.number}</span>
-              </div>
-              <h3 className="font-serif text-xl text-dark-800 mb-3 leading-tight">{step.title}</h3>
+              {/* Large gold numeral — matches original */}
+              <span className="font-serif text-7xl font-bold text-gold-400 leading-none mb-4 select-none">
+                {step.number}
+              </span>
+              <h3 className="font-serif text-xl text-dark-800 mb-2 leading-tight">{step.title}</h3>
               <p className="font-sans text-sm text-muted leading-relaxed">{step.description}</p>
             </motion.div>
           ))}

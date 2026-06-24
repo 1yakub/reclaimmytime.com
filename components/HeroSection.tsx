@@ -16,7 +16,7 @@ const fadeUp: Variants = {
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center pt-32 pb-20 px-6 overflow-hidden">
+    <section className="relative flex flex-col items-center justify-center min-h-[60vh] pt-20 pb-16 px-6 overflow-hidden">
       {/* Subtle radial gradient background */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(184,164,106,0.1)_0%,transparent_65%)] pointer-events-none" />
 
@@ -80,16 +80,6 @@ export default function HeroSection() {
             See what&apos;s included
             <ChevronDown className="w-4 h-4 group-hover:translate-y-0.5 transition-transform duration-150" />
           </a>
-        </motion.div>
-
-        {/* Scroll indicator line */}
-        <motion.div
-          className="mt-24 flex flex-col items-center"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.8, duration: 0.6, ease: EASE }}
-        >
-          <div className="w-px h-16 bg-gradient-to-b from-cream-300 to-transparent" />
         </motion.div>
       </div>
     </section>
