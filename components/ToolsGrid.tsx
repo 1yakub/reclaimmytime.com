@@ -1,17 +1,17 @@
 'use client'
 
+import Image from 'next/image'
 import { motion, type Variants } from 'framer-motion'
-import { ClaudeLogo, FathomLogo, WisprFlowLogo, GoHighLevelLogo, ZapierLogo, OpenAILogo } from './icons/BrandIcons'
 
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1]
 
 const tools = [
-  { name: 'Claude', category: 'Writing + thinking', bg: '#FAF7F2', Icon: ClaudeLogo },
-  { name: 'Fathom', category: 'Meeting notes', bg: '#FAF7F2', Icon: FathomLogo },
-  { name: 'WisprFlow', category: 'Talk-to-type', bg: '#FAF7F2', Icon: WisprFlowLogo },
-  { name: 'GoHighLevel', category: 'CRM & follow-up', bg: '#FAF7F2', Icon: GoHighLevelLogo },
-  { name: 'Zapier', category: 'Automation', bg: '#FAF7F2', Icon: ZapierLogo },
-  { name: 'OpenAI', category: 'ChatGPT + everyday AI', bg: '#FAF7F2', Icon: OpenAILogo },
+  { name: 'Claude', category: 'Writing + thinking', logo: '/logos/claude.png' },
+  { name: 'Fathom', category: 'Meeting notes', logo: '/logos/fathom.png' },
+  { name: 'WisprFlow', category: 'Talk-to-type', logo: '/logos/wisprflow.png' },
+  { name: 'GoHighLevel', category: 'CRM & follow-up', logo: '/logos/gohighlevel.png' },
+  { name: 'Zapier', category: 'Automation', logo: '/logos/zapier.png' },
+  { name: 'OpenAI', category: 'ChatGPT + everyday AI', logo: '/logos/openai.png' },
 ]
 
 const containerVariants: Variants = {
@@ -51,12 +51,16 @@ export default function ToolsGrid() {
               variants={cardVariants}
               className="group flex items-center gap-4 bg-cream-50 border border-cream-300 rounded-2xl p-5 cursor-default"
               style={{ transition: 'border-color 180ms ease, box-shadow 180ms ease' }}
-              whileHover={{ borderColor: '#C4A96B', boxShadow: '0 4px 16px rgba(0,0,0,0.08)' }}
+              whileHover={{ borderColor: '#C4A45A', boxShadow: '0 4px 16px rgba(0,0,0,0.08)' }}
             >
-              <div
-                className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 border border-cream-300 bg-white"
-              >
-                <tool.Icon className="w-6 h-6" />
+              <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 bg-white border border-cream-200 overflow-hidden">
+                <Image
+                  src={tool.logo}
+                  alt={tool.name}
+                  width={28}
+                  height={28}
+                  className="object-contain"
+                />
               </div>
               <div>
                 <p className="font-sans font-semibold text-sm text-dark-800">{tool.name}</p>
