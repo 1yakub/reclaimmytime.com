@@ -1,8 +1,10 @@
 'use client'
 
-import { useRef, useState } from 'react'
-import { motion, useInView, AnimatePresence } from 'framer-motion'
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { Plus, Minus } from 'lucide-react'
+
+const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1]
 
 const faqs = [
   {
@@ -32,18 +34,17 @@ const faqs = [
 ]
 
 export default function FAQ() {
-  const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-80px' })
   const [openId, setOpenId] = useState<string | null>(null)
 
   return (
-    <section className="py-24 px-6 bg-cream-50" ref={ref}>
+    <section className="py-24 px-6 bg-cream-50">
       <div className="max-w-2xl mx-auto">
         <motion.div
           className="text-center mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-20px' }}
+          transition={{ duration: 0.45, ease: EASE }}
         >
           <h2 className="font-serif text-3xl md:text-4xl text-dark-800">
             Questions you might be asking
@@ -53,15 +54,17 @@ export default function FAQ() {
         <motion.div
           className="divide-y divide-cream-300 border-y border-cream-300"
           initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, margin: '-20px' }}
+          transition={{ duration: 0.4, delay: 0.1, ease: EASE }}
         >
           {faqs.map((faq, i) => (
             <motion.div
               key={faq.id}
-              initial={{ opacity: 0, y: 10 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.4, delay: 0.2 + i * 0.08 }}
+              initial={{ opacity: 0, y: 8 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-20px' }}
+              transition={{ duration: 0.35, delay: 0.1 + i * 0.06, ease: EASE }}
             >
               <button
                 id={faq.id}
@@ -88,7 +91,7 @@ export default function FAQ() {
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: 'auto', opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3, ease: 'easeInOut' }}
+                    transition={{ duration: 0.22, ease: EASE }}
                     className="overflow-hidden"
                   >
                     <p className="font-sans text-sm text-muted leading-relaxed pb-5 pr-10">

@@ -1,7 +1,9 @@
 'use client'
 
 import { useRef, useEffect, useState } from 'react'
-import { useInView } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
+
+const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1]
 
 const stats = [
   { value: '5–10', suffix: ' hrs', label: 'Saved per week' },
@@ -19,7 +21,7 @@ function CountUp({ value }: { value: string }) {
     if (!isPlain || animated.current) return
     animated.current = true
     const target = parseInt(value, 10)
-    const duration = 1400
+    const duration = 900
     const start = Date.now()
     const tick = () => {
       const elapsed = Date.now() - start
@@ -36,7 +38,7 @@ function CountUp({ value }: { value: string }) {
 
 export default function StatsBar() {
   const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-80px' })
+  const inView = useInView(ref, { once: true, margin: '-20px' })
   const [started, setStarted] = useState(false)
 
   useEffect(() => {
@@ -48,9 +50,12 @@ export default function StatsBar() {
       <div className="max-w-5xl mx-auto px-6">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-0">
           {stats.map((stat, i) => (
-            <div
+            <motion.div
               key={i}
               className="flex flex-col items-center text-center py-8 px-4 border-r border-dark-700 last:border-r-0 even:border-r-0 md:even:border-r md:last:border-r-0"
+              initial={{ opacity: 0, y: 12 }}
+              animate={started ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.45, delay: i * 0.07, ease: EASE }}
             >
               <p className="font-serif text-4xl md:text-5xl font-bold text-cream-100 leading-none mb-2">
                 {started ? (
@@ -65,7 +70,7 @@ export default function StatsBar() {
               <p className="font-sans text-xs text-cream-400 tracking-widest uppercase mt-1">
                 {stat.label}
               </p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

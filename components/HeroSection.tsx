@@ -3,12 +3,14 @@
 import { motion, type Variants } from 'framer-motion'
 import { ArrowRight, ChevronDown } from 'lucide-react'
 
+const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1]
+
 const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 16 },
   visible: (delay: number = 0) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as [number, number, number, number], delay },
+    transition: { duration: 0.5, ease: EASE, delay },
   }),
 }
 
@@ -35,7 +37,7 @@ export default function HeroSection() {
           className="font-serif text-5xl md:text-6xl lg:text-7xl text-dark-800 leading-[1.05] tracking-tight text-balance mb-6"
           initial="hidden"
           animate="visible"
-          custom={0.1}
+          custom={0.08}
           variants={fadeUp}
         >
           Stop researching AI.
@@ -48,7 +50,7 @@ export default function HeroSection() {
           className="font-sans text-base md:text-lg text-muted max-w-2xl mx-auto leading-relaxed mb-10"
           initial="hidden"
           animate="visible"
-          custom={0.2}
+          custom={0.16}
           variants={fadeUp}
         >
           Reclaim My Time helps you automate repetitive tasks with AI and reclaim
@@ -60,7 +62,7 @@ export default function HeroSection() {
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
           initial="hidden"
           animate="visible"
-          custom={0.3}
+          custom={0.22}
           variants={fadeUp}
         >
           <a
@@ -72,10 +74,11 @@ export default function HeroSection() {
           </a>
           <a
             href="#how-it-works"
-            className="flex items-center gap-2 text-sm font-sans text-dark-700 hover:text-dark-900 transition-colors group"
+            className="flex items-center gap-2 text-sm font-sans text-dark-700 hover:text-dark-900 group"
+            style={{ transition: 'color 180ms ease' }}
           >
             See what&apos;s included
-            <ChevronDown className="w-4 h-4 group-hover:translate-y-0.5 transition-transform" />
+            <ChevronDown className="w-4 h-4 group-hover:translate-y-0.5 transition-transform duration-150" />
           </a>
         </motion.div>
 
@@ -84,7 +87,7 @@ export default function HeroSection() {
           className="mt-24 flex flex-col items-center"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1.2, duration: 0.8 }}
+          transition={{ delay: 0.8, duration: 0.6, ease: EASE }}
         >
           <div className="w-px h-16 bg-gradient-to-b from-cream-300 to-transparent" />
         </motion.div>

@@ -1,8 +1,9 @@
 'use client'
 
-import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { CheckCircle, ChevronRight } from 'lucide-react'
+
+const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1]
 
 const reportItems = [
   '3–7 AI tools matched to your business',
@@ -12,19 +13,17 @@ const reportItems = [
 ]
 
 export default function AssessmentSection() {
-  const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-80px' })
-
   return (
-    <section id="assessment" className="py-24 px-6 bg-cream-100" ref={ref}>
+    <section id="assessment" className="py-24 px-6 bg-cream-100">
       <div className="max-w-5xl mx-auto">
         <div className="grid md:grid-cols-2 gap-0 rounded-3xl overflow-hidden shadow-xl">
           {/* Left — Dark Panel */}
           <motion.div
             className="bg-dark-800 p-10 lg:p-14 flex flex-col justify-between"
-            initial={{ opacity: 0, x: -30 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            initial={{ opacity: 0, x: -16 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-20px' }}
+            transition={{ duration: 0.5, ease: EASE }}
           >
             <div>
               <p className="text-xs font-sans font-medium tracking-widest uppercase text-gold-400 mb-5">
@@ -44,10 +43,11 @@ export default function AssessmentSection() {
             <div className="mt-10">
               <a
                 href="#how-it-works"
-                className="inline-flex items-center gap-2 text-sm font-sans font-medium text-gold-400 hover:text-gold-300 transition-colors group"
+                className="inline-flex items-center gap-2 text-sm font-sans font-medium text-gold-400 hover:text-gold-300 group"
+                style={{ transition: 'color 180ms ease' }}
               >
                 See what&apos;s included
-                <ChevronRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                <ChevronRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-150" />
               </a>
             </div>
           </motion.div>
@@ -55,9 +55,10 @@ export default function AssessmentSection() {
           {/* Right — Light Panel */}
           <motion.div
             className="bg-cream-50 p-10 lg:p-14 border border-cream-300 flex flex-col justify-center"
-            initial={{ opacity: 0, x: 30 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+            initial={{ opacity: 0, x: 16 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-20px' }}
+            transition={{ duration: 0.5, delay: 0.08, ease: EASE }}
           >
             <p className="text-xs font-sans font-medium tracking-widest uppercase text-muted mb-6">
               Your custom report includes
@@ -67,9 +68,10 @@ export default function AssessmentSection() {
                 <motion.li
                   key={item}
                   className="flex items-start gap-3"
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={inView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.4, delay: 0.25 + i * 0.1 }}
+                  initial={{ opacity: 0, y: 8 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-20px' }}
+                  transition={{ duration: 0.35, delay: 0.15 + i * 0.07, ease: EASE }}
                 >
                   <CheckCircle className="w-5 h-5 text-gold-500 flex-shrink-0 mt-0.5" />
                   <span className="font-sans text-sm text-dark-700 leading-snug">{item}</span>

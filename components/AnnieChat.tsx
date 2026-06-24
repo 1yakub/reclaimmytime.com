@@ -1,34 +1,27 @@
 'use client'
 
-import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { Send } from 'lucide-react'
+
+const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1]
 
 const messages = [
   { type: 'bot', text: 'Are you regularly using AI tools in your business?' },
-  {
-    type: 'user',
-    text: "Yes — I'm using AI tools like ChatGPT or Claude at least a few times per week.",
-  },
-  {
-    type: 'bot',
-    text: "Great! What's taking up most of your time right now — admin, client work, or content?",
-  },
+  { type: 'user', text: "Yes — I'm using AI tools like ChatGPT or Claude at least a few times per week." },
+  { type: 'bot', text: "Great! What's taking up most of your time right now — admin, client work, or content?" },
 ]
 
 export default function AnnieChat() {
-  const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-80px' })
-
   return (
-    <section className="py-24 px-6 bg-cream-100" ref={ref}>
+    <section className="py-24 px-6 bg-cream-100">
       <div className="max-w-5xl mx-auto">
         <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
           {/* Left — Copy */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            initial={{ opacity: 0, x: -16 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-20px' }}
+            transition={{ duration: 0.5, ease: EASE }}
           >
             <div className="flex items-center gap-3 mb-6">
               <div className="relative">
@@ -61,9 +54,10 @@ export default function AnnieChat() {
 
           {/* Right — Chat UI */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+            initial={{ opacity: 0, x: 16 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-20px' }}
+            transition={{ duration: 0.5, delay: 0.1, ease: EASE }}
           >
             <div className="bg-cream-50 border border-cream-300 rounded-3xl overflow-hidden shadow-lg">
               {/* Header */}
@@ -83,9 +77,10 @@ export default function AnnieChat() {
                   <motion.div
                     key={i}
                     className={`flex ${msg.type === 'user' ? 'justify-end' : 'justify-start'}`}
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={inView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.4, delay: 0.5 + i * 0.25 }}
+                    initial={{ opacity: 0, y: 6 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.3, delay: 0.3 + i * 0.18, ease: EASE }}
                   >
                     <div
                       className={`max-w-[80%] px-4 py-3 rounded-2xl text-xs font-sans leading-relaxed ${
@@ -103,8 +98,9 @@ export default function AnnieChat() {
                 <motion.div
                   className="flex justify-start"
                   initial={{ opacity: 0 }}
-                  animate={inView ? { opacity: 1 } : {}}
-                  transition={{ duration: 0.4, delay: 1.3 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.3, delay: 0.9, ease: EASE }}
                 >
                   <div className="bg-white border border-cream-300 rounded-2xl rounded-bl-sm px-4 py-3 flex gap-1.5 items-center">
                     {[0, 1, 2].map((j) => (
@@ -127,7 +123,12 @@ export default function AnnieChat() {
                     className="flex-1 bg-transparent text-xs font-sans text-dark-700 placeholder-cream-400 outline-none"
                     readOnly
                   />
-                  <button className="w-7 h-7 rounded-full bg-gold-500 flex items-center justify-center flex-shrink-0 hover:bg-gold-600 transition-colors">
+                  <button
+                    className="w-7 h-7 rounded-full bg-gold-500 flex items-center justify-center flex-shrink-0"
+                    style={{ transition: 'background-color 150ms ease' }}
+                    onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#9E8A54')}
+                    onMouseLeave={e => (e.currentTarget.style.backgroundColor = '#B8A46A')}
+                  >
                     <Send className="w-3 h-3 text-white" />
                   </button>
                 </div>
